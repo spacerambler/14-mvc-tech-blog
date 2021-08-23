@@ -2,19 +2,19 @@
     {
       "title": "Women Developer Podcast",
       "postCopy": "I really enjoyed listening to this podcast created by women developers.",
-      "dateCreated": "",
-      "userName": ""
+      "date_created": "08/22/2021",
+      "user_id": "1"
     },
     {
         "title": "Productivity Tips",
         "postCopy": "Here are a few tips I've collected over the years from books, podcasts, and experience...",
-        "dateCreated": "",
-        "userName": ""
+        "date_created": "07/15/2021",
+        "user_id": "1"
       },
       {
         "title": "What's your favorite music to listen to while coding?",
         "postCopy": "Getting in the zone is hard but music helps. I like listening to drum and bass while I code.",
-        "dateCreated": "",
-        "userName": ""
+        "date_created": "06/22/2021",
+        "user_id": "2"
       }
   ]
