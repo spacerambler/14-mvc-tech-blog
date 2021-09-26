@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const { post } = require('.');
 const { Post, User } = require('../models');
-const withAuth = require('../utils/auth.js')
+const withAuth = require('../utils/auth.js');
+const sequelize = require('../config/connection.js');
 
 // router.get('/', async (req, res) =>{
 //     try {
@@ -25,7 +25,6 @@ const withAuth = require('../utils/auth.js')
 // });
 
 router.get('/', (req, res) =>{
-   
          Post.findAll({
             include: [
                 {
