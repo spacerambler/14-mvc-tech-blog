@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Post } = require('../../models');
 
 // Create new user
 router.post('/', async (req, res) => {
@@ -66,11 +66,54 @@ router.post('/logout', (req, res) => {
   }
 });
 
-// update user
-
 // Find all users
+router.get('/', async (req, res)=>{
+try {
+  User.findAll({
+    attributes: {exclude: [password]}
+  })
+  res.status(200).json(userData);
+} catch(err){
+  res.status(500).json(err);
+}
+})
 
 // find one user
+router.get('/:id', async (req, res)=>{
+  try {
+    User.findOne({
+      attributes: {exclude: [password]}, 
+      where: {id: req.params.id}, 
+      include: [
+        {
+          model: Post, 
+          attributes: ["id", "title", "postCopy", "date_created"]
+        }, 
+        {
+          model: Comment, 
+          attributes: ["id", "title", "commentContent", "date_created"],
+          include: {
+            model: Post, 
+            attributes: ["title"]
+          }, 
+        }, 
+        { 
+          model: Post, 
+          attributes: ["title"],
+        }
+      ]
+    });
+    if (!userData) {
+      res.status(400).json({ message: 'No user found with that id'});
+      return;
+    }
+    res.status(200).json(userData);
+  } catch(err){
+    res.status(500).json(err);
+  }
+  })
+
+// update user
 
 // delete user
 

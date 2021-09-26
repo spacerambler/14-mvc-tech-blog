@@ -26,6 +26,7 @@ const sequelize = require('../config/connection.js');
 //     }
 // });
 
+// get all posts
 router.get('/', (req, res) =>{
          Post.findAll({
             include: [
@@ -49,27 +50,22 @@ router.get('/', (req, res) =>{
 })
 });
 
-// router.get('/dashboard', withAuth, (req, res) => {
-//     User.findByPk(req.session.user_id, {
-//         include: [{ model: Post }]
-//     }).then((userData, err) => {
-//         if(err)res.status(500).json(err);
-//     })
+// get single post
 
-//     const posts = userData.map((post) => post.get({ plain: true}));
+// get post comments
 
-//     res.render('dashboard', {
-//         ...user,
-//         logged_in: true
-//     })
-// })
+// login route
+router.get('/login', (req, res) => {
+    if (req.session.logged_in) {
+        res.redirect('/dashboard');
+        return;
+    }
+    res.render('login');
+})
 
-// router.get('/login', (req, res) => {
-//     if (req.session.logged_in) {
-//         res.redirect('/dashboard');
-//         return;
-//     }
-//     res.render('login');
-// })
+// sign up route
+router.get('/signup', (req, res)=>{
+    res.render('signup')
+    });
 
 module.exports = router;

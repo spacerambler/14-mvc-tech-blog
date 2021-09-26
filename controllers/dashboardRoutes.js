@@ -3,6 +3,8 @@
 // const withAuth = require('../utils/auth.js');
 // const sequelize = require('../config/connection.js');
 
+// get all posts of user
+
 // router.get('/', withAuth, (req, res) =>{
        
 //     Post.findAll({
@@ -23,7 +25,11 @@
 //             posts, loggedIn: true
 //         })
 
-
 // })
 // });
 
+// get one post of user
+
+// create new post
+
+// module.exports = router
