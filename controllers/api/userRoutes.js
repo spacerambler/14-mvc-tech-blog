@@ -114,7 +114,38 @@ router.get('/:id', async (req, res)=>{
   })
 
 // update user
+router.put('/:id', async (req, res)=>{
+  try {
+    User.update(req.body, {
+      individualHooks: true,
+      where: {
+        id: req.params.id
+      }
+    })
+    if (!userData) {
+      res.status(400).json({ message: 'No user found with that id'});
+      return;
+    }
+    res.status(200).json(userData);
+  } catch(err){
+    res.status(500).json(err);
+  }
+});
 
 // delete user
+router.delete('/:id', async (req, res)=>{
+  try {
+    User.destroy({
+      where: { id: req.params.id }
+    })
+    if (!userData) {
+      res.status(400).json({ message: 'No user found with that id'});
+      return;
+    }
+    res.status(200).json(userData);
+  } catch(err){
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;
