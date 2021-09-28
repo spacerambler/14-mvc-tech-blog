@@ -1,13 +1,13 @@
 //form handler
-const newPostFormHandler = async (event) => {
+const editPostFormHandler = async (event) => {
     event.preventDefault();
   
     const title = document.querySelector('#blog-title').value.trim();
     const blog = document.querySelector('#blog-post').value.trim();
   
-    if (name && email && password) {
-      const response = await fetch('/api/posts', {
-        method: 'POST',
+    if (title && blog) {
+      const response = await fetch('/api/posts/:id', {
+        method: 'PUT',
         body: JSON.stringify({ title, blog }),
         headers: { 'Content-Type': 'application/json' },
       });
@@ -21,5 +21,5 @@ const newPostFormHandler = async (event) => {
   };
   
   document
-    .querySelector('.new-blog-form')
-    .addEventListener('submit', newPostFormHandler);
+    .querySelector('.edit-blog-form')
+    .addEventListener('submit', editPostFormHandler);

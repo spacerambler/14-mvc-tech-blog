@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User } = require('../models');
+const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth.js');
 const sequelize = require('../config/connection.js');
 
@@ -9,6 +9,9 @@ router.get('/', withAuth, (req, res) =>{
 });
 
 // get one post of user
+router.get('/id', withAuth, (req, res) =>{
+
+});
 
 // create new post
 router.get('/new', withAuth, (req, res)=>{
