@@ -1,6 +1,6 @@
 {{#each posts as |post| }}
 <div class="row mb-4 post">
-  <div class="col-md-5">
+  <div>
     <h2>
       {{{title}}}
     </h2>
@@ -13,3 +13,5 @@
   </div>
 </div>
 {{/each}}
+
+<!--If I were to do this over again, I'd want to try adding a field in the models that would pull the first 90 characters of the blog content-->
